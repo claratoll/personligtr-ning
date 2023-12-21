@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538330826857",
+    "project_id": "personligtraning-1dba8",
+    "storage_bucket": "personligtraning-1dba8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538330826857:android:e8a997bab975d574d63af8",
+        "android_client_info": {
+          "package_name": "se.claratoll.personligtrning"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByy9lVLglObXV2h2e8O2R0nTyalF9cXk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
