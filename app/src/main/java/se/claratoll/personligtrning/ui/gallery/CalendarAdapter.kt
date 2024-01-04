@@ -13,12 +13,13 @@ import se.claratoll.personligtrning.R
 import java.net.MalformedURLException
 import java.net.URL
 
-class CalendarAdapter (private val events: List<Calendar>) : RecyclerView.Adapter<CalendarAdapter.EventViewHolder>() {
+class CalendarAdapter (var events: List<Calendar>, private val calendarVM: CalendarViewModel) : RecyclerView.Adapter<CalendarAdapter.EventViewHolder>() {
+
+
 
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.recyclertextview)
         val switchView: Switch = itemView.findViewById(R.id.switch1)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -32,8 +33,7 @@ class CalendarAdapter (private val events: List<Calendar>) : RecyclerView.Adapte
 
         holder.titleTextView.setOnClickListener {
             if (!event.link.isNullOrBlank()) {
-                val returntrue = isValidUrl(event.link)
-                if (returntrue) {
+                if (isValidUrl(event.link)) {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(event.link))
                     holder.titleTextView.context.startActivity(intent)
                 } else {
@@ -52,11 +52,16 @@ class CalendarAdapter (private val events: List<Calendar>) : RecyclerView.Adapte
         } else {
             holder.switchView.visibility = View.INVISIBLE
         }
+
+        holder.switchView.setOnCheckedChangeListener { _, isChecked ->
+            // Uppdatera done-status i Firebase
+            calendarVM.updateEventDoneStatus(event.documentId, isChecked)
+        }
     }
 
     override fun getItemCount(): Int = events.size
 
-    fun isValidUrl(url: String): Boolean {
+    private fun isValidUrl(url: String): Boolean {
         return try {
             URL(url)
             true
