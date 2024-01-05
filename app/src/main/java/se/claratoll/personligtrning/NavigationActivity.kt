@@ -11,6 +11,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.leinardi.android.speeddial.SpeedDialView
 import se.claratoll.personligtrning.databinding.ActivityNavigationBinding
 
 class NavigationActivity : AppCompatActivity() {
@@ -30,6 +32,14 @@ class NavigationActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        val speedDialView = findViewById<SpeedDialView>(R.id.speedDial)
+        speedDialView.addActionItem(
+            SpeedDialActionItem.Builder(R.id.fab_no_label, R.drawable.baseline_add)
+                .create()
+        )
+
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_navigation)
