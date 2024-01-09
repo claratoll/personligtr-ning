@@ -1,11 +1,11 @@
-package se.claratoll.personligtrning.ui.gallery
+package se.claratoll.personligtrning.ui.calendar
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,29 +20,39 @@ class CalendarFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var calendarView: CalendarView
+
     private lateinit var recyclerViewEvents: RecyclerView
+    private lateinit var calendarAdapter: CalendarAdapter
+    private lateinit var calendarVM: CalendarViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val galleryViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)
-
         _binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        calendarVM = ViewModelProvider(this)[CalendarViewModel::class.java]
+
         calendarView = root.findViewById(R.id.calendarView)
         recyclerViewEvents = root.findViewById(R.id.calendarRecyclerView)
-
-        val events = listOf(
-            Calendar("Händelse 1", "https://strongandhappy.se/", true),
-            Calendar("Händelse 2", "",false),
-        )
-
         recyclerViewEvents.layoutManager = LinearLayoutManager(requireContext())
-        recyclerViewEvents.adapter = CalendarAdapter(events)
+
+        calendarAdapter = CalendarAdapter(emptyList(), calendarVM)
+        recyclerViewEvents.adapter = calendarAdapter
+
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val selectedDate = String.format("%d-%02d-%02d", year, month + 1, dayOfMonth)
+            Log.v("!!!", "datumet vald dag är $selectedDate")
+            calendarVM.getCalendarData(selectedDate)
+        }
+
+        calendarVM.listOfEvents.observe(viewLifecycleOwner) { events ->
+            calendarAdapter.events = events
+            calendarAdapter.notifyDataSetChanged()
+            Log.v("!!!", "event size " + events.size.toString())
+        }
 
         return root
     }

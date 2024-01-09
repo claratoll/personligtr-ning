@@ -58,5 +58,5 @@ dependencies {
 
 // Classic View only
     implementation "com.leinardi.android:speed-dial:3.3.0"
-    implementation 'com.github.leinardi:FloatingActionButtonSpeedDial:master-SNAPSHOT'
+
 }
