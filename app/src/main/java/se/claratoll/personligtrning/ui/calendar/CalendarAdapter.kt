@@ -1,4 +1,4 @@
-package se.claratoll.personligtrning.ui.gallery
+package se.claratoll.personligtrning.ui.calendar
 
 import android.content.Intent
 import android.net.Uri

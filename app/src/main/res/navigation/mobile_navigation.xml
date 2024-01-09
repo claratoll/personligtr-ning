@@ -12,14 +12,26 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="se.claratoll.personligtrning.ui.gallery.CalendarFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_calendar"
+        android:name="se.claratoll.personligtrning.ui.calendar.CalendarFragment"
+        android:label="Calendar"
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="se.claratoll.personligtrning.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_workout"
+        android:name="se.claratoll.personligtrning.ui.workout.WorkoutFragment"
+        android:label="Workout"
+        tools:layout="@layout/fragment_workout" />
+
+    <fragment
+        android:id="@+id/nav_new_steps"
+        android:name="se.claratoll.personligtrning.ui.workout.NewStepsFragment"
+        android:label="New Steps"
+        tools:layout="@layout/fragment_new_steps" />
+
+    <fragment
+        android:id="@+id/nav_new_workout"
+        android:name="se.claratoll.personligtrning.ui.workout.NewWorkoutFragment"
+        android:label="New Steps"
+        tools:layout="@layout/fragment_new_steps" />
 </navigation>
