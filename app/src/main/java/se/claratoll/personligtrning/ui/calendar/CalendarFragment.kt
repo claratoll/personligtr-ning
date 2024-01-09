@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import se.claratoll.personligtrning.R
 import se.claratoll.personligtrning.databinding.FragmentCalendarBinding
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class CalendarFragment : Fragment() {
 
@@ -24,6 +27,10 @@ class CalendarFragment : Fragment() {
     private lateinit var recyclerViewEvents: RecyclerView
     private lateinit var calendarAdapter: CalendarAdapter
     private lateinit var calendarVM: CalendarViewModel
+<<<<<<< HEAD:app/src/main/java/se/claratoll/personligtrning/ui/calendar/CalendarFragment.kt
+=======
+
+>>>>>>> fdff5efc1d8d882d72d97c13a903118e44187488:app/src/main/java/se/claratoll/personligtrning/ui/gallery/CalendarFragment.kt
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -28,7 +28,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+<<<<<<< HEAD
         app:sdMainFabClosedSrc="@drawable/baseline_add" />
 
+=======
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/baseline_add_24" />
+>>>>>>> fdff5efc1d8d882d72d97c13a903118e44187488
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
